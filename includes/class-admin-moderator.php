@@ -138,6 +138,7 @@ if (!class_exists('Admin_Moderator')) {
             
             update_post_meta($id, 'moderate_status', $status);
             update_post_meta($id, 'moderated_by', get_current_user_id());
+            update_post_meta($id, 'moderated_date', date('m/d/Y'));
             wp_send_json_success();
         }
         /*
@@ -219,7 +220,13 @@ if (!class_exists('Admin_Moderator')) {
                 
                 $moderated_by = get_post_meta(intval($post->ID), 'moderated_by', true);
                 $moderated_by = ($moderated_by) ? get_user_by('id', $moderated_by) : '';
-                $moderated_by = (!empty($moderated_by))? "<a href='".get_edit_user_link($moderated_by->ID)."'>".$moderated_by->display_name.'</a>' : 'Unknown'; ?>
+                $moderated_by = (!empty($moderated_by))? "<a href='".get_edit_user_link($moderated_by->ID)."'>".$moderated_by->display_name.'</a>' : 'Unknown';
+                
+                if (!empty($moderated_by)) {
+                    $moderated_date = get_post_meta(intval($post->ID), 'moderated_date', true);
+                  
+                    $moderated_by = ($moderated_date) ? $moderated_by." on $moderated_date" : $moderated_by;
+                } ?>
              <tr class="archived_moderated hide">
                  <td><?php echo $post->ID; ?></td>
                  <td><?php echo $post->post_title; ?></td>
@@ -240,7 +247,13 @@ if (!class_exists('Admin_Moderator')) {
                 
                 $moderated_by = get_post_meta(intval($post->ID), 'moderated_by', true);
                 $moderated_by = ($moderated_by) ? get_user_by('id', $moderated_by) : '';
-                $moderated_by = (!empty($moderated_by))? "<a href='".get_edit_user_link($moderated_by->ID)."'>".$moderated_by->display_name.'</a>' : 'Unknown'; ?>
+                $moderated_by = (!empty($moderated_by))? "<a href='".get_edit_user_link($moderated_by->ID)."'>".$moderated_by->display_name.'</a>' : 'Unknown';
+                
+                if (!empty($moderated_by)) {
+                    $moderated_date = get_post_meta(intval($post->ID), 'moderated_date', true);
+                  
+                    $moderated_by = ($moderated_date) ? $moderated_by." on $moderated_date" : $moderated_by;
+                } ?>
              <tr class="archived_released hide">
                  <td><?php echo $post->ID; ?></td>
                  <td><?php echo $post->post_title; ?></td>
