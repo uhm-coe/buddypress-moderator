@@ -1,0 +1,11 @@
+/* 
+    Created on : Oct 16, 2018, 1:48:27 PM
+    Author     : Kirk Johnson
+*/
+.flag_for_moderation {
+    float: right;
+    text-decoration: none!important;
+}
+.moderated{
+    color: red;
+}

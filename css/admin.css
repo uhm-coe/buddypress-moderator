@@ -1,0 +1,37 @@
+/* 
+    Created on : Oct 17, 2018, 7:07:39 AM
+    Author     : Kirk Johnson
+*/
+.hide{
+    display: none;
+}
+div.filter{
+    background: #fff;
+    padding: 5px;
+    margin: 1%;
+    border-radius: 5px;
+    border: 1px solid #b4b9be;
+    box-shadow: 2px 2px 8px #b4b9be;
+}
+td.actions a {
+    color: #fff;
+    padding: 5px;
+    display: block;
+    margin: 1%;
+    border-radius: 5px;
+    float: left;
+    cursor: pointer;
+}
+
+td.actions a.archived_released{
+    background: rgb(78, 154, 6);
+    cursor: pointer;
+    text-decoration: none;
+}
+td.actions a.moderate {
+    background: #0073aa;
+}
+
+td.actions a.archived_moderated {
+    background: #ff9966;
+}
