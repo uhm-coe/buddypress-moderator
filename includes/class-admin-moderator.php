@@ -226,6 +226,12 @@ if (!class_exists('Admin_Moderator')) {
                 $flagged_by = ($flagged_by) ? get_user_by('id', $flagged_by) : '';
                 $flagged_by = (!empty($flagged_by))? "<a href='".get_edit_user_link($flagged_by->ID)."'>".$flagged_by->display_name.'</a>' : 'Unknown';
                 
+                if (!empty($flagged_by)) {
+                    $flagged_date = get_post_meta(intval($post->ID), 'flagged_date', true);
+                  
+                    $flagged_by = ($flagged_date) ? $flagged_by." on $flagged_date" : $flagged_by;
+                }
+                
                 $moderated_by = get_post_meta(intval($post->ID), 'moderated_by', true);
                 $moderated_by = ($moderated_by) ? get_user_by('id', $moderated_by) : '';
                 $moderated_by = (!empty($moderated_by))? "<a href='".get_edit_user_link($moderated_by->ID)."'>".$moderated_by->display_name.'</a>' : 'Unknown';
@@ -253,6 +259,12 @@ if (!class_exists('Admin_Moderator')) {
                 $flagged_by = get_post_meta(intval($post->ID), 'flagged_by', true);
                 $flagged_by = ($flagged_by) ? get_user_by('id', $flagged_by) : '';
                 $flagged_by = (!empty($flagged_by))? "<a href='".get_edit_user_link($flagged_by->ID)."'>".$flagged_by->display_name.'</a>' : 'Unknown';
+                
+                if (!empty($flagged_by)) {
+                    $flagged_date = get_post_meta(intval($post->ID), 'flagged_date', true);
+                  
+                    $flagged_by = ($flagged_date) ? $flagged_by." on $flagged_date" : $flagged_by;
+                }
                 
                 $moderated_by = get_post_meta(intval($post->ID), 'moderated_by', true);
                 $moderated_by = ($moderated_by) ? get_user_by('id', $moderated_by) : '';
