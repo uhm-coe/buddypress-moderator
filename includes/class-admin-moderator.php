@@ -189,6 +189,7 @@ if (!class_exists('Admin_Moderator')) {
              <tr>
                  <th>ID</th>
                  <th>Title</th>
+                 <th>Author</th>
                  <th>Flagged By</th>
                  <th>Moderated By</th>
                  <th>Content</th>
@@ -209,6 +210,7 @@ if (!class_exists('Admin_Moderator')) {
              <tr class="moderate">
                  <td><?php echo $post->ID; ?></td>
                  <td><?php echo $post->post_title; ?></td>
+                 <td><?php bbp_reply_author_link($post->ID); ?></td>
                  <td><?php echo $flagged_by; ?></td>
                  <td></td>
                  <td><?php echo $post->post_content; ?></td>
@@ -236,6 +238,7 @@ if (!class_exists('Admin_Moderator')) {
              <tr class="archived_moderated hide">
                  <td><?php echo $post->ID; ?></td>
                  <td><?php echo $post->post_title; ?></td>
+                 <td><?php bbp_reply_author_link($post->ID); ?></td>
                  <td><?php echo $flagged_by; ?></td>
                  <td><?php echo $moderated_by; ?></td>
                  <td><?php echo $post->post_content; ?></td>
@@ -263,6 +266,7 @@ if (!class_exists('Admin_Moderator')) {
              <tr class="archived_released hide">
                  <td><?php echo $post->ID; ?></td>
                  <td><?php echo $post->post_title; ?></td>
+                 <td><?php bbp_reply_author_link($post->ID); ?></td>
                  <td><?php echo $flagged_by; ?></td>
                  <td><?php echo $moderated_by; ?></td>
                  <td><?php echo $post->post_content; ?></td>

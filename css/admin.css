@@ -13,6 +13,9 @@ div.filter{
     border: 1px solid #b4b9be;
     box-shadow: 2px 2px 8px #b4b9be;
 }
+table.moderator_table a.bbp-author-avatar, table.moderator_table a.bbp-author-name {
+    display: block;
+}
 td.actions a {
     color: #fff;
     padding: 5px;
