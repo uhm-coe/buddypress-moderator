@@ -199,7 +199,13 @@ if (!class_exists('Admin_Moderator')) {
            <?php foreach ($moderate as $post) {
                 $flagged_by = get_post_meta(intval($post->ID), 'flagged_by', true);
                 $flagged_by = ($flagged_by) ? get_user_by('id', $flagged_by) : '';
-                $flagged_by = (!empty($flagged_by))? "<a href='".get_edit_user_link($flagged_by->ID)."'>".$flagged_by->display_name.'</a>' : 'Unknown'; ?>
+                $flagged_by = (!empty($flagged_by))? "<a href='".get_edit_user_link($flagged_by->ID)."'>".$flagged_by->display_name.'</a>' : 'Unknown';
+                
+                if (!empty($flagged_by)) {
+                    $flagged_date = get_post_meta(intval($post->ID), 'flagged_date', true);
+                  
+                    $flagged_by = ($flagged_date) ? $flagged_by." on $flagged_date" : $flagged_by;
+                } ?>
              <tr class="moderate">
                  <td><?php echo $post->ID; ?></td>
                  <td><?php echo $post->post_title; ?></td>

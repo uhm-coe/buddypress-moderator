@@ -70,6 +70,7 @@ if (!class_exists('Front_Moderator')) {
             }
             //add moderated by
             update_post_meta($id, 'flagged_by', get_current_user_id());
+            update_post_meta($id, 'flagged_date', date('m/d/Y'));
             wp_send_json_success();
         }
         /*
