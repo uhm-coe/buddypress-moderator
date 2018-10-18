@@ -35,13 +35,13 @@
                     //mark content as moderated change buttons appropriately
                     switch(action){
                         case 'archived_released':
-                            td.html('<a class="archived_moderated">Archive Moderate</a> <a class="moderate">Moderate</a>');
+                            td.html('<a class="archived_moderated">Moderate</a> <a class="moderate">Return to Pending</a>');
                             break;
                         case 'archived_moderated':
-                            td.html('<a class="archived_released">Archive Release</a> <a class="moderate">Moderate</a>');
+                            td.html('<a class="archived_released">Release</a> <a class="moderate">Return to Pending</a>');
                             break;
                         case 'moderate':
-                            td.html('<a class="archived_released">Archive Release</a> <a class="archived_moderated">Archive Moderate</a>');
+                            td.html('<a class="archived_released">Release</a> <a class="archived_moderated">Moderate</a>');
                             break;
                     }
                 },

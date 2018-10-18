@@ -179,9 +179,9 @@ if (!class_exists('Admin_Moderator')) {
     <h1>Moderate Content</h1>
     <div class="filter">
         <label>Filter: <br>
-            <input type="radio" class="view" name="view" value="moderate" checked /> Moderate <br>
-            <input type="radio" class="view"  name="view" value="archived_moderated"  /> Archived Moderated <br>
-             <input type="radio" class="view"  name="view" value="archived_released"  /> Archived Released
+            <input type="radio" class="view" name="view" value="moderate" checked /> Pending <br>
+            <input type="radio" class="view"  name="view" value="archived_moderated"  /> Moderated <br>
+             <input type="radio" class="view"  name="view" value="archived_released"  /> Released
         </label>
     </div>
      <table class="wp-list-table widefat moderator_table">
@@ -215,8 +215,8 @@ if (!class_exists('Admin_Moderator')) {
                  <td></td>
                  <td><?php echo $post->post_content; ?></td>
                  <td class="actions" data-id="<?php echo $post->ID; ?>">
-                     <a class="archived_released" >Archive Release</a> 
-                     <a class="archived_moderated" >Archive Moderate</a>
+                     <a class="archived_released" >Release</a> 
+                     <a class="archived_moderated" >Moderate</a>
                  </td>
              </tr>
           <?php
@@ -249,8 +249,8 @@ if (!class_exists('Admin_Moderator')) {
                  <td><?php echo $moderated_by; ?></td>
                  <td><?php echo $post->post_content; ?></td>
                  <td class="actions" data-id="<?php echo $post->ID; ?>">
-                     <a class="archived_released" >Archive Release</a>
-                     <a class="moderate" >Moderate</a> 
+                     <a class="archived_released" >Release</a>
+                     <a class="moderate" >Return to Pending</a> 
                  </td>
              </tr>
           <?php
@@ -283,8 +283,8 @@ if (!class_exists('Admin_Moderator')) {
                  <td><?php echo $moderated_by; ?></td>
                  <td><?php echo $post->post_content; ?></td>
                  <td class="actions" data-id="<?php echo $post->ID; ?>">
-                     <a class="archived_moderated" >Archive Moderate</a>
-                     <a class="moderate" >Moderate</a> 
+                     <a class="archived_moderated" >Moderate</a>
+                     <a class="moderate" >Return to Pending</a> 
                  </td>
              </tr>
           <?php
