@@ -33,7 +33,8 @@ if (!class_exists('Admin_Moderator')) {
             //add tablesorter to admin page
             if ($hook_suffix == 'toplevel_page_moderate') {
                 wp_enqueue_script("buddypress_moderator_tablesorter", plugins_url()."/buddypress-moderator/js/tablesorter.min.js", ['jquery']);
-                wp_enqueue_script("buddypress_moderator_admin", plugins_url()."/buddypress-moderator/js/admin.js", ['jquery','buddypress_moderator_tablesorter']);
+                wp_enqueue_script('buddypress_moderator_sweetalert_2', plugins_url().'/buddypress-moderator/js/sweetalert2.min.js', ['jquery']);
+                wp_enqueue_script("buddypress_moderator_admin", plugins_url()."/buddypress-moderator/js/admin.js", ['jquery','buddypress_moderator_tablesorter', 'buddypress_moderator_sweetalert_2']);
                 
                 //localize for ajax calls
                 wp_localize_script(
@@ -139,6 +140,9 @@ if (!class_exists('Admin_Moderator')) {
             update_post_meta($id, 'moderate_status', $status);
             update_post_meta($id, 'moderated_by', get_current_user_id());
             update_post_meta($id, 'moderated_date', date('m/d/Y'));
+            if (isset($_REQUEST['message']) && $status == 'archived_moderated') {
+                update_post_meta($id, 'moderated_message', $_REQUEST['message']);
+            }
             wp_send_json_success();
         }
         /*

@@ -86,14 +86,14 @@ if (!class_exists('Front_Moderator')) {
          */
         public function moderate_replies($content, $reply_id = false)
         {
-            if ($reply_id !== false) {
-                $status = get_post_meta(bbp_get_reply_ancestor_id(), 'moderate_status', true);
-                if ($status == 'moderate') {
-                    $content = '<p class="moderated">This content has been flagged for moderation.</p>';
-                } elseif ($status == 'archived_moderated') {
-                    $content = '<p class="moderated">This content has been found to be offensive and will no longer be displayed</p>';
-                }
+            $status = get_post_meta(bbp_get_reply_ancestor_id(), 'moderate_status', true);
+            if ($status == 'moderate') {
+                $content = '<p class="moderated">This content has been flagged for moderation.</p>';
+            } elseif ($status == 'archived_moderated') {
+                $message = get_post_meta(bbp_get_reply_ancestor_id(), 'moderated_message', true);
+                $content = ($message) ? '<p class="moderated">'.$message.'</p>' : '<p class="moderated">This content has been found to be offensive and will no longer be displayed</p>';
             }
+            
             return $content;
         }
     }

@@ -26,15 +26,21 @@ td.actions a {
     cursor: pointer;
 }
 
-td.actions a.archived_released{
+td.actions a.archived_released, .btn-success{
     background: rgb(78, 154, 6);
     cursor: pointer;
     text-decoration: none;
 }
+.btn-success, .btn-danger{
+    color: white!important;
+    border-radius: 5px;
+}
 td.actions a.moderate {
     background: #0073aa;
 }
-
-td.actions a.archived_moderated {
+.swal2-title {
+    line-height: 34px;
+}
+td.actions a.archived_moderated, .btn-danger {
     background: #ff9966;
 }

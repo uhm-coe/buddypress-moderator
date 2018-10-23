@@ -16,7 +16,46 @@
             var tr = $(this).closest('tr');
             var td = $(this).closest('td');
             var id = td.data('id');
-            //send to server to update results
+            var message = '';
+            
+            if(action == 'archived_moderated') {
+               var swalWithBootstrapButtons = swal.mixin({
+                confirmButtonClass: 'btn btn-success',
+                cancelButtonClass: 'btn btn-danger',
+                buttonsStyling: false,
+              });
+
+              swalWithBootstrapButtons({
+                title: 'What message would you like displayed for this content?',
+                text: "",
+                type: 'question',
+                input: 'textarea',
+                showCancelButton: true,
+                confirmButtonText: 'Save',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true
+              }).then((result) => {
+                if (result.value) {
+                  make_action_call(action,tr, td, id, result.value);
+                } else if (
+                  // Read more about handling dismissals
+                  result.dismiss === swal.DismissReason.cancel
+                ) {
+                  swalWithBootstrapButtons(
+                    'Cancelled',
+                    'No action was taken',
+                    'error'
+                  )
+                }
+              })
+            } else {
+                make_action_call(action,tr,td,id,message);
+            }
+            
+        })
+    });
+    function make_action_call(action,tr,td,id,message){
+        //send to server to update results
             jQuery.ajax({
                 type: 'post',
                 dataType: 'json',
@@ -26,6 +65,7 @@
                         id: id,
                         directive: action,
                         nonce: admin_object.nonce,
+                        message: message
                 },
                 success: function(response) {
                     tr.removeClass(tr.attr('class'));
@@ -50,10 +90,7 @@
                         alert("Was unable to take requested action.");
                 },
             });
-            
-        })
-    });
-    
+    }
     function hide_all_rows(){
         $('.moderator_table tbody tr').each(function(){
             if (! $(this).hasClass('hide')) {
