@@ -185,7 +185,8 @@ if (!class_exists('Admin_Moderator')) {
         <label>Filter: <br>
             <input type="radio" class="view" name="view" value="moderate" checked /> Pending <br>
             <input type="radio" class="view"  name="view" value="archived_moderated"  /> Moderated <br>
-             <input type="radio" class="view"  name="view" value="archived_released"  /> Released
+            <input type="radio" class="view"  name="view" value="archived_released"  /> Released <br>
+            <input type="radio" class="view"  name="view" value="all_posts"  /> All Posts
         </label>
     </div>
      <table class="wp-list-table widefat moderator_table">
@@ -194,6 +195,7 @@ if (!class_exists('Admin_Moderator')) {
                  <th>ID</th>
                  <th>Title</th>
                  <th>Author</th>
+                 <th>Status</th>
                  <th>Flagged By</th>
                  <th>Moderated By</th>
                  <th>Content</th>
@@ -215,6 +217,7 @@ if (!class_exists('Admin_Moderator')) {
                  <td><?php echo $post->ID; ?></td>
                  <td><?php echo $post->post_title; ?></td>
                  <td><?php bbp_reply_author_link($post->ID); ?></td>
+                 <td>Pending Moderation</td>
                  <td><?php echo $flagged_by; ?></td>
                  <td></td>
                  <td><?php echo $post->post_content; ?></td>
@@ -249,6 +252,7 @@ if (!class_exists('Admin_Moderator')) {
                  <td><?php echo $post->ID; ?></td>
                  <td><?php echo $post->post_title; ?></td>
                  <td><?php bbp_reply_author_link($post->ID); ?></td>
+                 <td>Moderated</td>
                  <td><?php echo $flagged_by; ?></td>
                  <td><?php echo $moderated_by; ?></td>
                  <td><?php echo $post->post_content; ?></td>
@@ -283,6 +287,7 @@ if (!class_exists('Admin_Moderator')) {
                  <td><?php echo $post->ID; ?></td>
                  <td><?php echo $post->post_title; ?></td>
                  <td><?php bbp_reply_author_link($post->ID); ?></td>
+                 <td>Released</td>
                  <td><?php echo $flagged_by; ?></td>
                  <td><?php echo $moderated_by; ?></td>
                  <td><?php echo $post->post_content; ?></td>

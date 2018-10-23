@@ -5,7 +5,11 @@
         
         //control view of table rows
         $(document).on('click', '.view', function(){
-            toggle_rows($(this).val());
+            if($(this).val() == 'all_posts' ){
+                show_all_rows();
+            } else {
+                toggle_rows($(this).val());
+            }
         });
         
         //control if someone selects an action
@@ -90,6 +94,13 @@
                         alert("Was unable to take requested action.");
                 },
             });
+    }
+    function show_all_rows(){
+        $('.moderator_table tbody tr').each(function(){
+            if ( $(this).hasClass('hide')) {
+                $(this).removeClass('hide');
+            }
+        });
     }
     function hide_all_rows(){
         $('.moderator_table tbody tr').each(function(){
